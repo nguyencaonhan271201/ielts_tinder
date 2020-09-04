@@ -18,7 +18,7 @@
         div.appendChild(track.attach());
         var video = div.getElementsByTagName("video")[0];
         if (video) {
-            video.setAttribute("style", "max-width:85vw;");
+            video.setAttribute("style", "width: 100%;");
         }
     }
 
@@ -31,8 +31,7 @@
 
         const div = document.createElement('div');
         div.id = participant.sid;
-        div.classList.add("card");
-        div.setAttribute("style", "float: left; margin: 10px;");
+        div.classList.add("col-lg-6", 'col-md-6', 'col-sm-12');
 
         content =  "<div class='card-header' style='display:flex; justify-content: space-around; ;clear:both; padding:6px'>";
 
@@ -43,7 +42,7 @@
                 "&nbsp <button id='" + participant.identity + "video' class='btn btn-success'>On</button>"
                 "</div>";
         }else{
-            content += participant.identity + "</div>";
+            content += "<button class='btn btn-dark btn-block'> Partner : " + participant.identity + " </button>" + "</div>";
         }
 
         div.innerHTML = content;
@@ -140,13 +139,13 @@
 
 @section('content')
 <div class="content">
-    <div class='container text-center'>
+    <div class='container-fluid text-center'>
 
         <br/>
 
         <h3>{{$room}}</h3>
 
-        <div id="media-div">
+        <div class='row' id="media-div">
 
         </div>
     </div>
@@ -155,10 +154,10 @@
 <div class="icon">
     <div class="row align-items-center">
         <div class="col">
-            <a href="{{route('feeds.index')}}"> <img id="iconNewsfeed" src="{{asset('image/iconNewsfeed.png')}}" alt=""></a>
+            <a href="{{route('feeds.index')}}"> <img class="iconNewsfeed" src="{{asset('image/iconNewsfeed.png')}}" alt=""></a>
         </div>
         <div class="col">
-            <a href="{{route('search')}}"> <img id="iconSearch" src="{{asset('image/icon_search.png')}}" alt=""></a>
+            <a href="{{route('search')}}"> <img class="iconSearch" src="{{asset('image/icon_search.png')}}" alt=""></a>
         </div>
         <div class="col">
             <div class="backgroundRound">
@@ -166,10 +165,10 @@
             </div>
         </div>
         <div class="col">
-            <a href="{{route('notify.index')}}"> <img id="iconNoti" src="{{asset('image/notification.png')}}" alt=""></a>
+            <a href="{{route('notify.index')}}"> <img class="iconNoti" src="{{asset('image/notification.png')}}" alt=""></a>
         </div>
         <div class="col">
-            <a href="{{route('profile.show', Auth::user()->id)}}"> <img id="iconProfile" src="{{asset('image/icon_profile.png')}}" alt=""></a>
+            <a href="{{route('profile.show', Auth::user()->id)}}"> <img class="iconProfile" src="{{asset('image/icon_profile.png')}}" alt=""></a>
         </div>
     </div>
 </div>
